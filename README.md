@@ -1,62 +1,63 @@
-Your `README.md` file was incomplete and had formatting issues. Here is a complete, well-formatted version with all Markdown blocks and setup instructions.
-
-```markdown
 # React Native Product Catalog
 
-A clean-architecture React Native app to browse and filter products by category, using [dummyjson.com](https://dummyjson.com/) as the API source.
+A clean-architecture React Native app to browse and filter products by category, using the [DummyJSON API](https://dummyjson.com/).
 
-## Features
+## ✨ Features
 
-- Product listing with images, price, and rating
-- Filter products by category using a modal
-- Clean architecture: UI decoupled from API via repository and mappers
-- Error and loading state handling
+- Product listing with image, title, price, and rating
+- Filter products by category (fetched dynamically from API)
+- Sort products by price or rating
+- Product detail view with brand, description, and stock info
+- Decoupled architecture: UI, domain, and data layers separated
 - State management with Zustand
-- Data fetching with React Query
+- Data fetching and caching with React Query
+- Error and loading states handled gracefully
 
-## Setup Instructions
+## 🛠️ Setup Instructions
 
 1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   ```bash
+   git clone https://github.com/eshinkawa/products-app.git
+   cd products-app
    ```
 
 2. **Install dependencies:**
-   ```sh
+   ```bash
    npm install
    ```
 
 3. **Start the development server:**
-   ```sh
+   ```bash
    npx expo start
    ```
 
-4. **Run on your device or emulator:** 
-    - Use the Expo Go app (iOS/Android) or an emulator.
+4. **Run the app:**
+Launch an emulator or simulator (iOS)
+   ```bash
+   npx expo run:ios
+   ```
 
-## Project Structure
+## 🗂️ Project Structure
 
-- `app/index.tsx`: Main screen, UI only, uses custom hook for data.
-- `app/hooks/useProductFilters.ts`: Encapsulates all product/category fetching, sorting, and filter logic.
-- `app/repositories/productRepository.ts`: Repository layer for API calls and mapping.
-- `app/core/productMapper.ts`: Maps API data to app models.
-- `app/services/api.ts`: API client using Axios.
-- `store/store.ts`: Zustand store for filter state.
-- `components/ProductCard.tsx`: Product card UI component.
-
-## Code Explanation
-
-- **UI Layer** (`app/index.tsx`): Renders product list and filter modal. All business logic is abstracted away.
-- **Custom Hook** (`useProductFilters`): Handles fetching, sorting, and filter state.
-- **Repository Layer**: Fetches data from the API and maps it to app models.
-- **Mappers**: Convert API data to internal types for decoupling.
-- **Error/Loading Handling**: Managed at each layer, with user feedback in the UI.
-
-## Running the App
-
-Make sure you have Node.js and npm installed. Start the app with:
-
-```sh
-npx expo start
 ```
+app/
+├── index.tsx                  # Main screen (UI only)
+├── hooks/useProductFilters.ts # Handles filtering, sorting, and data fetching
+├── repositories/              # API integration layer
+│   └── productRepository.ts
+├── core/productMapper.ts      # Transforms API response into domain models
+├── services/api.ts            # Axios API client
+components/
+├── ProductCard.tsx            # UI component for individual product
+store/
+├── store.ts                   # Zustand store for filter state
+```
+
+## 📦 Architecture
+
+- **UI Layer**: Renders screens and components. No business logic.
+- **Custom Hooks**: Encapsulate data fetching, filtering, and sorting logic.
+- **Repository Layer**: Responsible for API calls and data transformation.
+- **Mappers**: Convert raw API data into clean, internal app models.
+- **Store**: Global state for category filters using Zustand.
+- **API**: Axios instance for handling API requests.
