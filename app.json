@@ -3,7 +3,6 @@
     "name": "ProductsApp",
     "slug": "ProductsApp",
     "version": "1.0.0",
-
     "scheme": "ProductsApp",
     "web": {
       "bundler": "metro",
@@ -21,28 +20,38 @@
     ],
     "experiments": {
       "typedRoutes": true,
-
       "tsconfigPaths": true
     },
-
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.edu-shin.ProductsApp",
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "This app needs access to your calendar to add purchase reminders.",
+        "NSCalendarsWriteOnlyAccessUsageDescription": "This app needs to add purchase reminders to your calendar."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.edu_shin.ProductsApp"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "06851431-7f14-4b19-95d3-84dcea442072"
       }
     }
   }
